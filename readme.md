@@ -56,6 +56,32 @@ cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLI
 Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
 Select "boilerplate-eclipse" directory created previously as root directory -> Finish
 
+## Valgrind 
+
+In order to install `valgrind` run following command:
+```
+sudo apt-get install valgrind
+```
+
+Navigate to the build folder in the repository and run:
+```
+valgrind --leak-check=yes --tool=memcheck ./app/shell-app
+```
+
+For the use of KCacheGrind, you need to install it using the command:
+```
+sudo apt-get install kcachegrind
+```
+
+After installation, navigate to the build folder of the repository and run the commands given below:
+```
+valgrind --tool=callgrind ./app/shell-app
+kcachegrind <output file by callgrind command>
+```
+
+The first command will generate the file which should be called using `kcachegrind` in order to see the memory profile of the code. 
+
+
 # Edit
 
 Source files may be edited under the "[Source Directory]" label in the Project Explorer.
